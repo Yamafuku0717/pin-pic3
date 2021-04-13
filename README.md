@@ -1,26 +1,38 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+|column            |Type       |Options                   |
+|------------------|-----------|--------------------------|
+|nickname          |string     |null: false               |
+|email             |string     |unique: true, null: false |
+|password          |string     |null: false               |
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+has_many :pictures
 
 
+## picturesテーブル
+
+|column            |Type       |Options                   |
+|------------------|-----------|--------------------------|
+|text              |string     |null: false               |
+|user              |references |foreign_key :true         |
+|public_private    |string     |null: false               |
+
+### Association
+has_many :memos, dependent: :destroy
+belongs_to :user
+
+
+## memosテーブル
+
+|column            |Type       |Options                   |
+|------------------|-----------|--------------------------|
+|info              |text       |                          |
+|picture           |references |foreign_key :true         |
+|offsetX           |float      |null: false               |
+|offsetY           |float      |null: false               |
+
+### Association
+belongs_to picture
