@@ -1,0 +1,62 @@
+<header>
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/">PinPic</a>
+    </div>
+    <div class="header-right">
+      <div class="free-word">
+        <%#= search_form_for @p, url: search_pictures_path, class: "free-word-form" do |f| %>
+          <%= f.search_field :text_cont, placeholder: 'キーワードから探す', class: "free-word-filed" %>
+          <%= f.hidden_field :public_private_eq, value: "公開" %>
+          <%= button_tag type: :submit, class: 'search-button' do %>
+            <%= image_tag "search.png", class: "search-icon" %>
+          <% end %>
+        <% end %>
+      </div>
+      <ul class="session">
+      <% if user_signed_in? %>
+        <li><%= link_to 'マイページ', user_picture_path(current_user) %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path %></li>
+        <li><%= link_to '新規登録', new_user_registration_path %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</header>
+<div class="current-user-name">
+  <% if user_signed_in? %>
+    現在のユーザー：<%= current_user.nickname  %>
+  <% end %>
+</div>
+<div class="whole-wrapper">
+  <div class="side-bar">
+    <%= link_to '新規投稿',  new_picture_path, class: "new-post-link" %>
+  </div>
+  <div class="contents-wrapper">
+    <div class="index-title">
+    みんなの投稿一覧
+    </div>
+    <div class="picture-container">
+      <% unless @pictures.empty? %>
+        <% @pictures.each do |picture| %>
+          <div class="index-contents">
+            <div class="picture-wrapper">
+              <%= link_to image_tag(picture.image , width: '100%', height: '100%', alt: "画像"), picture_path(picture), class: "picture" %>
+              <%= image_tag 'picture-pin2.png', class: "picture-pin" %>
+            </div>
+            <div class="description">
+              <div class="title">
+                <p><%= picture.text %></p>
+              </div>
+              <div class="user-name">
+                <%= link_to "投稿者: #{picture.user.nickname}", user_picture_path(picture.user.id) %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
