@@ -1,0 +1,76 @@
+<header class="show-header">
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/">PinPic</a>
+    </div>
+    <div class="header-right">
+      <ul class="session">
+      <% if user_signed_in? %>
+        <li><%= link_to 'マイページ', user_picture_path(current_user) %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path %></li>
+        <li><%= link_to '新規登録', new_user_registration_path %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</header>
+<div class="status-form">
+  <% if user_signed_in? && current_user.id == @picture.user.id %>
+    <%= form_with model: @picture, class: "change-status", local: true do |f| %>
+    ・ステータス: <%= f.radio_button :public_private, "公開" %>公開<%= f.radio_button :public_private, "非公開" %>非公開
+    <%= f.submit '変更' %>
+    <% end %>
+    <%= button_to '画像を削除する', picture_path(@picture), method: :delete, class: "destroy-link", onclick: "return confirm('画像を削除しますか？')" %>
+  <% end %>
+</div>
+<div class="show-wrapper">
+  <div class="picture-form-wrapper">
+    <div class="title-picture-wrapper">
+      <div class="sub-contents">
+        <div> </div>
+        <div class="picture-title">
+          <p><%= @picture.text %></p>
+        </div>
+        <input id='memo-switch' type="button" value="ふきだしを表示">
+      </div>
+      <div class="show-picture" id="position">
+        <img src="<%= url_for(@picture.image) %>" alt="画像" class="main-picture" id="picture" >
+        <% if @links.present? %>
+          <% @links.each do |link| %>
+            <a class="marker" href="/pictures/<%= link.picture.id %>/memos/<%= link.id %>" style="position: absolute;
+              top: <%= link.offsetY %>%;
+              left: <%= link.offsetX %>%;
+              transform: translate(-25%, -80%);" id="<%= link.id %>">
+              📌
+            </a>
+            <% if link.info.present? || link.image.attached? %>
+              <span class="memo-info" id="memo<%= link.id %>" style="position: absolute;
+                top: <%= link.offsetY  %>%;
+                left: <%= link.offsetX  %>%;"
+                >
+                <% if link.image.attached? %>
+                  <%= image_tag link.image, alt: "画像", class: "memo-picture" %><br>
+                <% end %>
+                <%= auto_link(simple_format(link.info)) %>
+              </span>
+            <% end %>
+          <% end %> 
+        <% end %>
+      </div>
+    </div>
+    <div class="form-wrapper">
+      <%= form_with(model: [@picture, @memo], class: 'memo-form hidden', id: 'form-field', local: true) do |f| %>
+        <div class="form-input">
+          <%= f.text_area :info, class: 'form-message', placeholder: 'maxlength 150', size: "50 x 5", maxlength: "150"%><br>
+          <label class="form-image">
+            <span class="image-file">画像</span><br>
+            <%= f.file_field :image, placeholder: 'Image url' %>
+          </label>
+        </div>
+        <%= f.submit '送信', class: 'form-submit' %>
+      <% end %>
+  </div>
+  </div>
+</div>

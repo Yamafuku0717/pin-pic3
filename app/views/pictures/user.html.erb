@@ -1,0 +1,93 @@
+<header>
+  <div class="header-wrapper">
+    <div class="header-title">
+      <a href="/">PinPic</a>
+    </div>
+    <div class="header-right">
+      <ul class="session">
+      <% if user_signed_in? && current_user.id == @user.id %>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <% elsif user_signed_in? %>
+        <li><%= link_to 'マイページ', user_picture_path(current_user) %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path %></li>
+        <li><%= link_to '新規登録', new_user_registration_path %></li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div class="user-page-wrapper">
+  <div class="user-main" id="public-main">
+    <% if user_signed_in? && current_user.id == @user.id %>
+      <div class="my-page-user">
+        <%= @user.nickname %>さんのマイページ
+      </div>
+      <div class="sub-container">
+        <div class="sub-title">
+          <h1>公開画像一覧</h1>
+        </div>
+        <div class="search-form">
+          <% if user_signed_in? && current_user.id == @user.id %>
+            <input id='status-change-private' type="button" value="非公開画像を表示"><br>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <div class="sub-title2">
+        <h1><%= @user.nickname %>さんの投稿画像一覧</h1>
+      </div>
+    <% end %>
+    <div class="user-picture-container">
+      <% unless @public_pictures.empty? %>
+        <% @public_pictures.each do |public_picture| %>
+          <div class="user-contents">
+            <div class="picture-wrapper">
+              <%= link_to image_tag(public_picture.image , width: '100%', height: '100%', alt: "画像"), picture_path(public_picture), class: "picture" %>
+              <%= image_tag 'picture-pin2.png', class: "picture-pin" %>
+            </div>
+            <div class="description">
+              <div class="title">
+                <p class="title"><%= public_picture.text %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="user-main" id="private-main" style="display: none;">
+    <div class="my-page-user">
+        <%= @user.nickname %>さんのマイページ
+    </div>
+    <div class="sub-container">
+      <div class="sub-title">
+        <h1>非公開画像一覧</h1>
+      </div>
+      <div class="search-form">
+      <% if user_signed_in? && current_user.id == @user.id %>
+        <input id='status-change-public' type="button" value="公開画像を表示"><br>
+      <% end %>
+      </div>
+    </div>
+    <div class="user-picture-container">
+      <% unless @private_pictures.empty? %>
+        <% @private_pictures.each do |private_picture| %>
+          <div class="user-contents">
+            <div class="picture-wrapper">
+              <%= link_to image_tag(private_picture.image , width: '100%', height: '100%', alt: "画像"), picture_path(private_picture), class: "picture" %>
+              <%= image_tag 'picture-pin2.png', class: "picture-pin" %>
+            </div>
+            <div class="description">
+              <div class="title">
+                <p class="title"><%= private_picture.text %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

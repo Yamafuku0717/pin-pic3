@@ -1,0 +1,21 @@
+<div class="new-post-wrapper">
+  <div class="new-post-container">
+    <div class="new-post-title">
+      <h1>新規投稿</h1>
+      <p>※著作権に違反するような画像の投稿は<br>お控えいただけますようお願いします。</p>
+    </div>
+    <div class="new-post-form">
+      <%= form_with model: @picture, class: "new-post-filed", local: true do |f| %>
+      <%= render 'error_messages', model: f.object %>
+        <%= label :text, 'タイトル', class: "title-label" %>
+        <br><%= f.text_field :text, class: "new-post-text", placeholder: '20文字以内でタイトルを入力してください', maxlength: 20 %>
+        <label>
+        <br><%= f.label :image, '画像', class: "image-label" %>
+        <br><%= f.file_field :image, class: "new-post-image" ,placeholder: 'Image url' %>
+        <br><input name="picture[public_private]" value="非公開" type="hidden">
+        <br><%= f.submit '送信', class: "new-post-submit" %>
+        <br><%= link_to 'トップページへ戻る', root_path, class: "to-top-page" %>
+      <% end %>
+    </div>
+  </div>
+</div>

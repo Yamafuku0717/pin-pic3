@@ -1,7 +1,7 @@
 <header>
   <div class="header-wrapper">
     <div class="header-title">
-      <a href="/">PinPic</a>
+      <a href="/">PinZD</a>
     </div>
     <div class="header-right">
       <div class="free-word">
@@ -25,33 +25,28 @@
     </div>
   </div>
 </header>
-<div class="current-user-name">
-  <% if user_signed_in? %>
-    現在のユーザー：<%= current_user.nickname  %>
-  <% end %>
-</div>
 <div class="whole-wrapper">
   <div class="side-bar">
-    <%= link_to '新規投稿',  new_picture_path, class: "new-post-link" %>
+    
   </div>
-  <div class="contents-wrapper">
+  <div class="result-wrapper">
     <div class="index-title">
-    みんなの投稿一覧
+      検索結果一覧
     </div>
     <div class="picture-container">
-      <% unless @pictures.empty? %>
-        <% @pictures.each do |picture| %>
-          <div class="index-contents">
+      <% unless @results.empty? %>
+        <% @results.each do |result| %>
+          <div class="contents">
             <div class="picture-wrapper">
-              <%= link_to image_tag(picture.image , width: '100%', height: '100%', alt: "画像"), picture_path(picture), class: "picture" %>
+              <%= link_to image_tag(result.image , width: '100%', height: '100%', alt: "画像"), picture_path(result), class: "picture" %>
               <%= image_tag 'picture-pin2.png', class: "picture-pin" %>
             </div>
             <div class="description">
               <div class="title">
-                <p><%= picture.text %></p>
+                <p><%= result.text %></p>
               </div>
               <div class="user-name">
-                <%= link_to "投稿者: #{picture.user.nickname}", user_picture_path(picture.user.id) %>
+                <%= link_to "投稿者: #{result.user.nickname}", user_picture_path(result.user.id) %>
               </div>
             </div>
           </div>
