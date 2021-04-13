@@ -60,4 +60,3 @@ function picture (){
 };
 };
 window.addEventListener('load', picture);
-
