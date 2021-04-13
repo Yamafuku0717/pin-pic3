@@ -1,0 +1,24 @@
+
+<div class="link-wrapper"> 
+  <div class="back-link">
+    <%= link_to "戻る", :back %>
+  </div>
+  <% if user_signed_in? && current_user.id == @picture.user.id %>
+  <div class="edit-delete">
+  <%= link_to '編集', edit_picture_memo_path(@picture, @link) %>
+  <%= button_to '削除', picture_memo_path(@picture, @link), method: :delete, onclick: "return confirm('画像を削除しますか？')" %>
+  </div>
+  <% end %>
+</div>
+<div class="memo-show-wrapper">
+  <% if @link.image.attached? %>
+  <div class="memo-show-picture-container">
+    <%= image_tag @link.image, alt: "画像", class: "memo-show-picture" %>
+  </div>
+  <% end %>
+  <div class="description-image">
+    <div class="memo-description">
+      <%= auto_link(simple_format(@link.info)) %>
+    </div>
+  </div>
+</div>
