@@ -5,4 +5,5 @@ class Picture < ApplicationRecord
   
   validates :image, presence: true
   validates :text, presence: true
+  validates :public_private, presence: true
 end
