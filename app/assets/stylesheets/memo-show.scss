@@ -1,0 +1,51 @@
+.memo-show-wrapper{
+  display: flex;
+  margin: 0 3vw;
+}
+
+.memo-show-picture-container{
+  max-width: 70%;
+}
+
+.description-image{
+  margin-left: 2vw;
+  width: 30%;
+  height: 40vh;
+  background-image: url(memo-back.png);
+  -moz-background-size:100% 100%;
+  background-size:100% 100%;
+  word-wrap: break-word;
+}
+
+.memo-description{
+  font-size: 1.3vw;
+  padding: 5vh 3vw 0 2vw;
+}
+
+.back-link a{
+  font-size: 1.3vw;
+  margin-left: 5vw;
+}
+
+.memo-show-picture{
+  max-width: 100%;
+}
+
+.link-wrapper{
+  display: flex;
+}
+
+.edit-delete{
+  margin-left: 1vw;
+  display: flex;
+  align-items: center;
+}
+
+.edit-delete a{
+  font-size: 1.3vw;
+}
+
+.edit-delete input{
+  font-size: 1.3vw;
+  margin-left: 0.5vw;
+}

@@ -1,0 +1,64 @@
+.new-post-wrapper{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.new-post-container{
+  width: 30vw;
+}
+
+.new-post-filed{
+  text-align: center;
+}
+
+.title-label{
+  font-size: 1.3vw;
+}
+
+.image-label{
+  font-size: 1.3vw;
+}
+
+.new-post-title{
+  margin-bottom: 3vh;
+}
+
+.new-post-title h1{
+  font-size: 4.5vw;
+  text-align: center;
+}
+
+.new-post-title p{
+  text-align: center;
+  margin-top: 2vh;
+  font-size: 1.3vw;
+}
+
+.new-post-text{
+  width: 20vw;
+  height: 4vh;
+  margin-bottom: 2vh;
+  font-size: 1vw;
+}
+
+.new-post-image{
+  margin-bottom: 2vh;
+  padding-left: 6vw;
+  font-size: 1vw;
+}
+
+.new-post-submit{
+  margin: 2vh 0;
+  width: 3vw;
+  font-size: 1.3vw;
+}
+
+.to-top-page{
+  font-size: 1.3vw;
+}
+
+.alert{
+  color: red;
+  font-size: 1.1vw;
+}

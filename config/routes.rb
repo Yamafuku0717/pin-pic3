@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'pictures#index'
+  resources :pictures do
+    resources :memos, only: [:create, :show, :edit, :update, :destroy]
+    member do
+      get 'user'
+    end
+    collection do
+      get 'search'
+    end
+  end
 end
