@@ -43,7 +43,7 @@
               top: <%= link.offsetY %>%;
               left: <%= link.offsetX %>%;
               transform: translate(-25%, -80%);" id="<%= link.id %>">
-              📌
+              <%= image_tag "picture-pin.png", class: "pin" %>
             </a>
             <% if link.info.present? || link.image.attached? %>
               <span class="memo-info" id="memo<%= link.id %>" style="position: absolute;
