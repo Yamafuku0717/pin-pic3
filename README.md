@@ -57,8 +57,13 @@ SNSの普及やスマートフォンのカメラ機能の向上で写真を撮�
  ・初期状態では画像が非公開になっていますので、公開したい場合、「公開」にチェックを入れて
   「変更」ボタンをクリックして下さい
  ・ピンをクリックするとリンク先で挿入された情報の編集・削除が出来ます
+  
+  ※テキスト・画像の挿入は投稿者のみ行うことが出来ます
 ```
-![Image](https://media.giphy.com/media/utnwMubSoz9bZdl4NK/giphy.gif)
+※新規投稿<br>
+![Image](https://media.giphy.com/media/5xuC8ZBy1L36yw32Bf/giphy.gif)<br>
+※テキスト挿入<br>
+![Image](https://media.giphy.com/media/GjiZGFE7lpxrj4L9fk/giphy.gif)
 
 ```bash  
 ■ 投稿された画像を閲覧する
@@ -69,6 +74,7 @@ SNSの普及やスマートフォンのカメラ機能の向上で写真を撮�
  ・ピンを直接クリックすると挿入されたテキストや画像の詳細ページに遷移します
 ```
 ![Image from Gyazo](https://i.gyazo.com/3c64ef3c7c4b9f4f382dd1fe0f09f299.gif)
+
 ```bash
 ■ 非公開機能
  ・投稿したユーザーのみ画像が閲覧できる機能

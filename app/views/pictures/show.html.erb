@@ -63,10 +63,10 @@
     <div class="form-wrapper">
       <%= form_with(model: [@picture, @memo], class: 'memo-form hidden', id: 'form-field', local: true) do |f| %>
         <div class="form-input">
-          <%= f.text_area :info, class: 'form-message', placeholder: 'maxlength 150', size: "50 x 5", maxlength: "150"%><br>
+          <%= f.text_area :info, class: 'form-message', placeholder: 'maxlength 150', size: "40 x 5", maxlength: "150"%><br>
           <label class="form-image">
             <span class="image-file">画像</span><br>
-            <%= f.file_field :image, placeholder: 'Image url' %>
+            <%= f.file_field :image, placeholder: 'Image url', class: "memo-form-image" %>
           </label>
         </div>
         <%= f.submit '送信', class: 'form-submit' %>
