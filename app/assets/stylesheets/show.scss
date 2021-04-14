@@ -31,7 +31,7 @@
   z-index: 10;
   padding: 5px;
   border-radius: 5px;
-  margin: -6vh 0 0 2.5vw;
+  margin: -8vh 0 0 2.7vw;
   white-space: nowrap;
   cursor: default;
 }
@@ -62,7 +62,7 @@
 
 .marker{
   z-index: 5;
-  font-size: 2vw;
+  font-size: 3vw;
   cursor: pointer;
 }
 
@@ -117,4 +117,8 @@
 .sub-contents{
   display: flex;
   justify-content: space-between;
+}
+
+.pin{
+  width: 3vw;
 }
