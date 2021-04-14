@@ -1,6 +1,8 @@
+<p class="memo-edit-p">挿入内容の編集</p>
 <%= form_with(model: [@picture, @link], class: 'memo-form', id: 'form-field', local: true) do |f| %>
   <div class="form-input">
-    <%= f.text_area :info, class: 'form-message', placeholder: 'type a message' %>
+    <%= f.text_area :info, class: 'form-message', placeholder: 'type a message', size: "50 x 5", maxlength: "150" %>
+    <br>
     <label class="form-image">
       <span class="image-file">画像</span>
       <%= f.file_field :image, placeholder: 'Image url' %>

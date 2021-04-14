@@ -69,7 +69,7 @@
 
 .show-wrapper {
   width: 100%;
-  margin-left: 3vw;
+  padding-left: 3vw;
 }
 
 .picture-form-wrapper{
@@ -77,11 +77,17 @@
   justify-content: space-between;
   width: 100%;
   height: 100%;
+  margin-bottom: 300px;
 }
 
 .form-wrapper{
   width: 25%;
   margin-top: 5vh;
+}
+
+.form-input{
+  width: 100%;
+  height: auto;
 }
 
 .memo-picture{
@@ -121,4 +127,8 @@
 
 .pin{
   width: 3vw;
+}
+
+.memo-form-image{
+  width: 100%;
 }
