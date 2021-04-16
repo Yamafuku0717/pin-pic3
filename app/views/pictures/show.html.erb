@@ -51,7 +51,7 @@
                 left: <%= link.offsetX  %>%;"
                 >
                 <% if link.image.attached? %>
-                  <%= image_tag link.image, alt: "画像", class: "memo-picture" %><br>
+                  <a href="/pictures/<%= link.picture.id %>/memos/<%= link.id %>"><%= image_tag link.image, alt: "画像", class: "memo-picture" %></a><br>
                 <% end %>
                 <%= auto_link(simple_format(link.info)) %>
               </span>

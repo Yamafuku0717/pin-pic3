@@ -62,4 +62,4 @@ gem 'image_processing', '~> 1.2'
 gem 'gon'
 gem 'ransack'
 gem 'rails_autolink'
-
+gem "aws-sdk-s3", require: false
