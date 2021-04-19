@@ -1,11 +1,12 @@
 class PicturesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :user, :search]
-  before_action :search_pictures, only: [:index, :user, :search]
+  before_action :search_pictures, only: [:index, :create, :user, :search]
   before_action :set_picture, only: [:show, :update, :destroy]
   before_action :move_to_index, only: :destroy
 
   def index 
-    @pictures = Picture.where(public_private: "公開").order('created_at DESC')
+    @pictures = Picture.where(public_private: "公開").includes(:user).order('created_at DESC')
+    @picture = Picture.new
   end
 
   def new 
@@ -13,12 +14,13 @@ class PicturesController < ApplicationController
   end
 
   def create 
+    @pictures = Picture.where(public_private: "公開").includes(:user).order('created_at DESC')
     @picture = Picture.new(picture_params)
     @memo = Memo.new
     if @picture.save
       render :show
     else
-      render :new
+      render :index
     end
     if user_signed_in?
       gon.current_user_id = current_user.id
@@ -56,7 +58,8 @@ class PicturesController < ApplicationController
   end
 
   def search
-    @results = @p.result.order('created_at DESC')
+    @results = @p.result.includes(:user).order('created_at DESC')
+    @picture = Picture.new
     render :index
   end
 

@@ -32,7 +32,24 @@
 </div>
 <div class="whole-wrapper">
   <div class="side-bar">
-    <%= link_to '新規投稿',  new_picture_path, class: "new-post-link" %>
+    <% if user_signed_in? %>
+      <%= link_to '新規投稿',  new_picture_path, class: "new-post-link" %>
+        <div class="post-message">
+          ※著作権に違反するような<br>画像の投稿はお控えいただけ<br>ますようお願いします。
+        </div>
+        <div class="new-post">
+          <%= form_with model: @picture, class: "new-post-form", local: true do |f| %>
+          <%= render 'error_messages', model: f.object %>
+            <%= label :text, 'タイトル (20文字以内)', class: "post-title" %>
+            <br><%= f.text_field :text, class: "text-field", placeholder: 'タイトルを入力してください', maxlength: 20, size: "30" %>
+            <label>
+            <br><%= f.label :image, '画像', class: "post-image-label" %>
+            <br><%= f.file_field :image, class: "post-image-field" ,placeholder: 'Image url', size: "15" %>
+            <br><input name="picture[public_private]" value="非公開" type="hidden">
+            <br><%= f.submit '送信', class: "" %>
+          <% end %>
+        </div>
+    <% end %>
   </div>
   <% if @results.nil? %>
     <div class="contents-wrapper">
