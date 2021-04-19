@@ -16,7 +16,10 @@ a {
   display: flex;
   padding: 0 2vw;
   margin-bottom: 5vh;
-  width: 100vw;
+  width: 100%;
+}
+.contents-wrapper{
+  width: 80%;
 }
 
 .current-user-name{
@@ -27,7 +30,7 @@ a {
 }
 
 .side-bar{
-  width: 22vw;
+  width: 20%;
   height: 100%;
   margin-top: 3vh;
 }
@@ -81,7 +84,7 @@ a {
 
 .picture-container{
   display: flex;
-  width: 78vw;
+  width: 100%;
   flex-wrap: wrap;
   background-image: url("/images/corkbord.jpeg");
   background-size: 100%;
@@ -112,25 +115,34 @@ a {
   font-weight: bold;
 }
 
-
-/*@media (max-width: 1000px) {
-  .marker {
-    font-size: 15px;
-  }
-  .memo-picture{
-    max-width: 200px;
-  }
+.new-post-form{
+  font-size: 1.1vw;
 }
 
+.post-message{
+  margin: 1vh 0;
+  font-size: 1.1vw;
+}
 
-@media (max-width: 550px) {
-  .memo-picture{
-    max-width: 100px;
-  }
+.post-image-field{
+  font-size: 1vw;
+  width: 100%;
+}
 
-  .memo-text {
-    font-size: 0.1px;
+.field_with_errors {
+  display: contents;
+}
+
+@media (max-width: 1000px) {
+  .index-contents{
+    width: 30%;
   }
   
-}*/
+}
+
+@media (max-width: 550px) {
+  .index-contents{
+    width: 40%;
+  }
+}
 

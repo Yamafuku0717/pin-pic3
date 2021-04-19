@@ -41,7 +41,7 @@
       </div>
     <% end %>
     <div class="user-picture-container">
-      <% unless @public_pictures.empty? %>
+      <% if @public_pictures.present? %>
         <% @public_pictures.each do |public_picture| %>
           <div class="user-contents">
             <div class="picture-wrapper">
@@ -73,7 +73,7 @@
       </div>
     </div>
     <div class="user-picture-container">
-      <% unless @private_pictures.empty? %>
+      <% if @private_pictures.present? %>
         <% @private_pictures.each do |private_picture| %>
           <div class="user-contents">
             <div class="picture-wrapper">
