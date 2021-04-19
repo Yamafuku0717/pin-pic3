@@ -57,6 +57,7 @@ class PicturesController < ApplicationController
 
   def search
     @results = @p.result.order('created_at DESC')
+    render :index
   end
 
   private

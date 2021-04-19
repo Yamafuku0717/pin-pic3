@@ -34,29 +34,57 @@
   <div class="side-bar">
     <%= link_to '新規投稿',  new_picture_path, class: "new-post-link" %>
   </div>
-  <div class="contents-wrapper">
-    <div class="index-title">
-    みんなの投稿一覧
-    </div>
-    <div class="picture-container">
-      <% unless @pictures.empty? %>
-        <% @pictures.each do |picture| %>
-          <div class="index-contents">
-            <div class="picture-wrapper">
-              <%= link_to image_tag(picture.image , width: '100%', height: '100%', alt: "画像"), picture_path(picture), class: "picture" %>
-              <%= image_tag 'picture-pin2.png', class: "picture-pin" %>
-            </div>
-            <div class="description">
-              <div class="title">
-                <p><%= picture.text %></p>
+  <% if @results.nil? %>
+    <div class="contents-wrapper">
+      <div class="index-title">
+      みんなの投稿一覧
+      </div>
+      <div class="picture-container">
+        <% if @pictures.present? %>
+          <% @pictures.each do |picture| %>
+            <div class="index-contents">
+              <div class="picture-wrapper">
+                <%= link_to image_tag(picture.image , width: '100%', height: '100%', alt: "画像"), picture_path(picture), class: "picture" %>
+                <%= image_tag 'picture-pin2.png', class: "picture-pin" %>
               </div>
-              <div class="user-name">
-                <%= link_to "投稿者: #{picture.user.nickname}", user_picture_path(picture.user.id) %>
+              <div class="description">
+                <div class="title">
+                  <p><%= picture.text %></p>
+                </div>
+                <div class="user-name">
+                  <%= link_to "投稿者: #{picture.user.nickname}", user_picture_path(picture.user.id) %>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class="contents-wrapper">
+      <div class="index-title">
+      検索結果一覧
+      </div>
+      <div class="picture-container">
+        <% if @results.present? %>
+          <% @results.each do |result| %>
+            <div class="index-contents">
+              <div class="picture-wrapper">
+                <%= link_to image_tag(result.image , width: '100%', height: '100%', alt: "画像"), picture_path(result), class: "picture" %>
+                <%= image_tag 'picture-pin2.png', class: "picture-pin" %>
+              </div>
+              <div class="description">
+                <div class="title">
+                  <p><%= result.text %></p>
+                </div>
+                <div class="user-name">
+                  <%= link_to "投稿者: #{result.user.nickname}", user_picture_path(result.user.id) %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
