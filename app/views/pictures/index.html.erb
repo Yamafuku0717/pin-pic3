@@ -33,7 +33,7 @@
 <div class="whole-wrapper">
   <div class="side-bar">
     <% if user_signed_in? %>
-      <%= link_to '新規投稿',  new_picture_path, class: "new-post-link" %>
+       <span class="new-post-link">新規投稿</span>
         <div class="post-message">
           ※著作権に違反するような<br>画像の投稿はお控えいただけ<br>ますようお願いします。
         </div>
@@ -73,6 +73,15 @@
                 </div>
               </div>
             </div>
+            <% if user_signed_in? %>
+              <% if picture.favorited_by?(current_user) %>
+                <p><span>お気に入り解除: </span><%=link_to picture.favorites.count, picture_favorites_path(picture.id), method: :delete %></p>
+              <% else %>
+                <p><span>お気に入り登録: </span><%=link_to picture.favorites.count, picture_favorites_path(picture.id), method: :post %></p>
+              <% end %>
+            <% else %>
+              <p><span>お気に入り数: </span><%= picture.favorites.count %></p>
+            <% end %>
           <% end %>
         <% end %>
       </div>

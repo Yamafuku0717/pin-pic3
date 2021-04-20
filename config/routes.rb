@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pictures#index'
   resources :pictures do
     resources :memos, only: [:create, :show, :edit, :update, :destroy]
+    resource :favorites, only: [:create, :destroy]
     member do
       get 'user'
     end

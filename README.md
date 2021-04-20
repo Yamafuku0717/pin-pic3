@@ -161,3 +161,9 @@ has_many :memos, dependent: :destroy
 
 ### Association
 belongs_to :picture
+
+## favoriteテーブル
+
+|column    |Type     |Options     |
+|----------|---------|------------|
+|
