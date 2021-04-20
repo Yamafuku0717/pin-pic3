@@ -55,6 +55,7 @@ class PicturesController < ApplicationController
     @user = User.find(params[:id]) 
     @private_pictures = @user.pictures.where(public_private: "非公開").order('created_at DESC')
     @public_pictures = @user.pictures.where(public_private: "公開").order('created_at DESC')
+    @favorites = @user.favorites
   end
 
   def search
