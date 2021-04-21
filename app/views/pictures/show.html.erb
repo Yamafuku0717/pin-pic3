@@ -33,7 +33,16 @@
         <div class="picture-title">
           <p><%= @picture.text %></p>
         </div>
-        <input id='memo-switch' type="button" value="ふきだしを表示">
+        <div class="favorite-memo-switch">
+          <% if user_signed_in? %>
+            <% if @picture.favorited_by?(current_user) %>
+              <%= button_to 'お気に入りを解除する', picture_favorites_path(@picture.id), method: :delete, class: "favorite-change" %>
+            <% else %>
+              <%= button_to 'お気に入りへ登録する', picture_favorites_path(@picture.id), method: :post, class: "favorite-change" %>
+            <% end %>
+          <% end %>
+          <input id='memo-switch' type="button" value="ふきだしを表示">
+        </div>
       </div>
       <div class="show-picture" id="position">
         <img src="<%= url_for(@picture.image) %>" alt="画像" class="main-picture" id="picture" >

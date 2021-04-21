@@ -71,9 +71,15 @@
                 <div class="user-name">
                   <%= link_to "投稿者: #{picture.user.nickname}", user_picture_path(picture.user.id) %>
                 </div>
+                <div class="favorite-count">
+                  <div class="icon">
+                    <%= image_tag 'heart-icon', class: "heart-icon" %>
+                    <%= picture.favorites.count %>
+                  </div>
+                </div>
               </div>
             </div>
-            <% if user_signed_in? %>
+            <!--<% if user_signed_in? %>
               <% if picture.favorited_by?(current_user) %>
                 <p><span>お気に入り解除: </span><%=link_to picture.favorites.count, picture_favorites_path(picture.id), method: :delete %></p>
               <% else %>
@@ -81,7 +87,7 @@
               <% end %>
             <% else %>
               <p><span>お気に入り数: </span><%= picture.favorites.count %></p>
-            <% end %>
+            <% end %>-->
           <% end %>
         <% end %>
       </div>

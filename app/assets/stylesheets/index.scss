@@ -60,9 +60,9 @@ a {
 
 .description{
   width: 100%;
-  padding: 0 10px;
   
 }
+
 .description p, a{
   font-size: 0.8vw;
 }
@@ -107,7 +107,8 @@ a {
 }
 
 .user-name{
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
 }
 
 .user-name a{
@@ -131,6 +132,25 @@ a {
 
 .field_with_errors {
   display: contents;
+}
+
+.favorite-count{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.icon{
+  display: flex;
+  background-color: white;
+  height: 3.5vh;
+  padding: 2px 3px;
+  font-size: 1.2vw;
+  border-radius: 10px;
+}
+
+.heart-icon{
+ width: 1.5vw;
+ padding-right: 2px;
 }
 
 @media (max-width: 1000px) {
