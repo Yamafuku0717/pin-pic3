@@ -25,15 +25,8 @@
       <div class="my-page-user">
         <%= @user.nickname %>さんのマイページ
       </div>
-      <div class="sub-container">
-        <div class="sub-title">
-          <h1>公開画像一覧</h1>
-        </div>
-        <div class="search-form">
-          <% if user_signed_in? && current_user.id == @user.id %>
-            <input id='status-change-private' type="button" value="非公開画像を表示"><br>
-          <% end %>
-        </div>
+      <div class="sub-title">
+        <h1>公開画像一覧</h1>
       </div>
     <% else %>
       <div class="sub-title2">
@@ -62,15 +55,8 @@
     <div class="my-page-user">
         <%= @user.nickname %>さんのマイページ
     </div>
-    <div class="sub-container">
-      <div class="sub-title">
-        <h1>非公開画像一覧</h1>
-      </div>
-      <div class="search-form">
-      <% if user_signed_in? && current_user.id == @user.id %>
-        <input id='status-change-public' type="button" value="公開画像を表示"><br>
-      <% end %>
-      </div>
+    <div class="sub-title">
+      <h1>非公開画像一覧</h1>
     </div>
     <div class="user-picture-container">
       <% if @private_pictures.present? %>
@@ -90,8 +76,36 @@
       <% end %>
     </div>
   </div>
-  <% @favorites.each do |favorite| %>
-    <%= image_tag favorite.picture.image , width: '50px', height: '50px', alt: "画像" %>
+  <div class="user-main" id="favorite-main" style="display:none;">
+      <div class="my-page-user">
+        <%= @user.nickname %>さんのマイページ
+      </div>
+      <div class="sub-title">
+        <h1>お気に入り一覧</h1>
+      </div>
+    <div class="user-picture-container">
+      <% if @favorites.present? %>
+        <% @favorites.each do |favorite| %>
+          <div class="user-contents">
+            <div class="picture-wrapper">
+              <%= link_to image_tag(favorite.picture.image , width: '100%', height: '100%', alt: "画像"), picture_path(favorite.picture), class: "picture" %>
+              <%= image_tag 'picture-pin2.png', class: "picture-pin" %>
+            </div>
+            <div class="description">
+              <div class="title">
+                <p class="title"><%= favorite.picture.text %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="menu-bar">
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <input id='status-change' type="button" value="非公開画像を表示"><br>
+    <input id='favorite-button' type="button" value="お気に入りを表示"><br>
   <% end %>
+  </div>
 </div>
 
