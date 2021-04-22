@@ -12,7 +12,23 @@
             <%= f.label :nickname%><em>(8 characters maximum)</em>
           </div>
           <div class='field-input'>
-            <%= f.text_field :nickname, autofocus: true, maxlength: 8, size: "20" %>
+            <%= f.text_field :nickname, autofocus: true, maxlength: 8, size: "30" %>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :profile%><em>(200 characters maximum)</em>
+          </div>
+          <div class='field-input'>
+            <%= f.text_area :profile, autofocus: true, maxlength: 200, size: "30 x 5" %>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='field-label'>
+            <%= f.label :profile_image%>
+          </div>
+          <div class='field-input'>
+            <%= f.file_field :image %>
           </div>
         </div>
         <div class='field'>

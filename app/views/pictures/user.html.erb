@@ -18,13 +18,18 @@
     </div>
   </div>
 </header>
-
+<div class="user-profile">
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image, width: "12%", height: "12%" %>
+  <% end %>
+  <%= @user.profile %>
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <%= link_to '編集',edit_user_registration_path %>
+  <% end %>
+</div>
 <div class="user-page-wrapper">
   <div class="user-main" id="public-main">
     <% if user_signed_in? && current_user.id == @user.id %>
-      <div class="my-page-user">
-        <%= @user.nickname %>さんのマイページ
-      </div>
       <div class="sub-title">
         <h1>公開画像一覧</h1>
       </div>
