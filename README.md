@@ -128,11 +128,14 @@ SNSの普及やスマートフォンのカメラ機能の向上で写真を撮�
 |column            |Type       |Options                   |
 |------------------|-----------|--------------------------|
 |nickname          |string     |null: false               |
+|profile           |text       |                          |
 |email             |string     |unique: true, null: false |
 |password          |string     |null: false               |
 
 ### Association
-has_many :pictures
+has_many :pictures, dependent: :destroy<br>
+has_many :favorites<br>
+has_many :favorite_pictures, through: :favorites, source: :tweet
 
 <br>
 
@@ -145,8 +148,9 @@ has_many :pictures
 |public_private    |string     |null: false               |
 
 ### Association
-has_many :memos, dependent: :destroy
-<br>belongs_to :user
+has_many :memos, dependent: :destroy<br>
+has_many :favorites, dependent: :destroy<br>
+belongs_to :user
 
 <br>
 
@@ -162,8 +166,13 @@ has_many :memos, dependent: :destroy
 ### Association
 belongs_to :picture
 
-## favoriteテーブル
+## favoritesテーブル
 
-|column    |Type     |Options     |
-|----------|---------|------------|
-|
+|column    |Type       |Options                        |
+|----------|-----------|-------------------------------|
+|user      |references |null: false, foreign_key :true |
+|picture   |references |null: false, foreign_key :true |
+
+### Association
+belongs_to :user<br>
+belongs_to :picture
