@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :pictures, dependent: :destroy
   has_many :favorites
   has_many :favorite_pictures, through: :favorites, source: :tweet
+  has_one_attached :image
 end

@@ -18,13 +18,18 @@
     </div>
   </div>
 </header>
-
+<div class="user-profile">
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image, width: "13%"%>
+  <% end %>
+  <%= @user.profile %>
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <%= link_to '編集',edit_user_registration_path %>
+  <% end %>
+</div>
 <div class="user-page-wrapper">
   <div class="user-main" id="public-main">
     <% if user_signed_in? && current_user.id == @user.id %>
-      <div class="my-page-user">
-        <%= @user.nickname %>さんのマイページ
-      </div>
       <div class="sub-title">
         <h1>公開画像一覧</h1>
       </div>
@@ -38,12 +43,18 @@
         <% @public_pictures.each do |public_picture| %>
           <div class="user-contents">
             <div class="picture-wrapper">
-              <%= link_to image_tag(public_picture.image , width: '100%', height: '100%', alt: "画像"), picture_path(public_picture), class: "picture" %>
-              <%= image_tag 'picture-pin2.png', class: "picture-pin" %>
+              <%= link_to image_tag(public_picture.image , width: '80%', height: '100%', alt: "画像"), picture_path(public_picture), class: "picture" %>
+              <%#= image_tag 'picture-pin2.png', class: "picture-pin" %>
             </div>
             <div class="description">
               <div class="title">
-                <p class="title"><%= public_picture.text %></p>
+                <p class="title"><%= public_picture.text.truncate(12) %></p>
+              </div>
+              <div class="favorite-count">
+                <div class="icon">
+                  <%= image_tag 'heart-icon', class: "heart-icon" %>
+                  <%= public_picture.favorites.count %>
+                </div>
               </div>
             </div>
           </div>
@@ -63,12 +74,12 @@
         <% @private_pictures.each do |private_picture| %>
           <div class="user-contents">
             <div class="picture-wrapper">
-              <%= link_to image_tag(private_picture.image , width: '100%', height: '100%', alt: "画像"), picture_path(private_picture), class: "picture" %>
-              <%= image_tag 'picture-pin2.png', class: "picture-pin" %>
+              <%= link_to image_tag(private_picture.image , width: '80%', height: '100%', alt: "画像"), picture_path(private_picture), class: "picture" %>
+              <%#= image_tag 'picture-pin2.png', class: "picture-pin" %>
             </div>
             <div class="description">
               <div class="title">
-                <p class="title"><%= private_picture.text %></p>
+                <p class="title"><%= private_picture.text.truncate(12) %></p>
               </div>
             </div>
           </div>
@@ -88,12 +99,21 @@
         <% @favorites.each do |favorite| %>
           <div class="user-contents">
             <div class="picture-wrapper">
-              <%= link_to image_tag(favorite.picture.image , width: '100%', height: '100%', alt: "画像"), picture_path(favorite.picture), class: "picture" %>
-              <%= image_tag 'picture-pin2.png', class: "picture-pin" %>
+              <%= link_to image_tag(favorite.picture.image , width: '80%', height: '100%', alt: "画像"), picture_path(favorite.picture), class: "picture" %>
+              <%#= image_tag 'picture-pin2.png', class: "picture-pin" %>
             </div>
             <div class="description">
               <div class="title">
-                <p class="title"><%= favorite.picture.text %></p>
+                <p class="title"><%= favorite.picture.text.truncate(12) %></p>
+              </div>
+              <div class="user-name">
+                <%= link_to "投稿者: #{favorite.user.nickname}", user_picture_path(favorite.user.id) %>
+              </div>
+              <div class="favorite-count">
+                <div class="icon">
+                  <%= image_tag 'heart-icon', class: "heart-icon" %>
+                  <%= favorite.picture.favorites.count %>
+                </div>
               </div>
             </div>
           </div>

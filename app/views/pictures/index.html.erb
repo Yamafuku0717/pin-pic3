@@ -61,12 +61,12 @@
           <% @pictures.each do |picture| %>
             <div class="index-contents">
               <div class="picture-wrapper">
-                <%= link_to image_tag(picture.image , width: '100%', height: '100%', alt: "画像"), picture_path(picture), class: "picture" %>
-                <%= image_tag 'picture-pin2.png', class: "picture-pin" %>
+                <%= link_to image_tag(picture.image , width: '80%', height: '100%', alt: "画像"), picture_path(picture), class: "picture" %>
+                <%#= image_tag 'picture-pin2.png', class: "picture-pin" %>
               </div>
               <div class="description">
                 <div class="title">
-                  <p><%= picture.text %></p>
+                  <p><%= picture.text.truncate(12) %></p>
                 </div>
                 <div class="user-name">
                   <%= link_to "投稿者: #{picture.user.nickname}", user_picture_path(picture.user.id) %>
@@ -102,15 +102,21 @@
           <% @results.each do |result| %>
             <div class="index-contents">
               <div class="picture-wrapper">
-                <%= link_to image_tag(result.image , width: '100%', height: '100%', alt: "画像"), picture_path(result), class: "picture" %>
-                <%= image_tag 'picture-pin2.png', class: "picture-pin" %>
+                <%= link_to image_tag(result.image , width: '80%', height: '100%', alt: "画像"), picture_path(result), class: "picture" %>
+                <%#= image_tag 'picture-pin2.png', class: "picture-pin" %>
               </div>
               <div class="description">
                 <div class="title">
-                  <p><%= result.text %></p>
+                  <p><%= result.text.truncate(12) %></p>
                 </div>
                 <div class="user-name">
                   <%= link_to "投稿者: #{result.user.nickname}", user_picture_path(result.user.id) %>
+                </div>
+                <div class="favorite-count">
+                  <div class="icon">
+                    <%= image_tag 'heart-icon', class: "heart-icon" %>
+                    <%= result.favorites.count %>
+                  </div>
                 </div>
               </div>
             </div>
