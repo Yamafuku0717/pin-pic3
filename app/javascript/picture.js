@@ -50,7 +50,7 @@ function picture (){
     const mark = `<div class="marker" style="position: absolute;
     top: ${(offsetY / h)*100}%;
     left: ${(offsetX / w)*100}%;
-    transform: translate(-60%, -80%);
+    transform: translate(-55%, -80%);
     ">💡</div>`
     position.insertAdjacentHTML("afterbegin", mark);
   },

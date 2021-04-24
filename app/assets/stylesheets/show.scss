@@ -19,7 +19,6 @@
 
 .show-picture{
   position: relative;
-  display: inline-block;
   max-width: 70vw;
 }
 
@@ -66,7 +65,6 @@
   cursor: pointer;
 }
 
-
 .show-wrapper {
   width: 100%;
   padding-left: 3vw;
@@ -98,6 +96,7 @@
 
 .main-picture {
   width: 100%;
+  display: block;
 }
 
 #memo-switch{
