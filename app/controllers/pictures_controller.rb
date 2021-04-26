@@ -7,6 +7,7 @@ class PicturesController < ApplicationController
   def index 
     @pictures = Picture.where(public_private: "公開").includes(:user).order('created_at DESC')
     @picture = Picture.new
+    @random = ["green-memo.png", "透明背景メモ.png"]
   end
 
   def new 
