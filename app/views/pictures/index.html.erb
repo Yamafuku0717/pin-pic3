@@ -25,6 +25,7 @@
     </div>
   </div>
 </header>
+<% b_images = ["透明背景メモ.png", "背景メモ2.png", "背景メモ3.png", "背景メモ4.png", "背景メモ5.png", "背景メモ6.png", "背景メモ7.png", "背景メモ8.png", "背景メモ9.png", "背景メモ10.png", "背景メモ11.png"] %>
 <div class="current-user-name">
   <% if user_signed_in? %>
     現在のユーザー：<%= current_user.nickname  %>
@@ -56,7 +57,6 @@
       <div class="index-title">
       みんなの投稿一覧
       </div>
-      <% b_images = ["透明背景メモ.png", "背景メモ2.png", "背景メモ3.png", "背景メモ4.png", "背景メモ5.png", "背景メモ6.png", "背景メモ7.png", "背景メモ8.png", "背景メモ9.png", "背景メモ10.png", "背景メモ11.png"] %>
       <div class="picture-container">
         <% if @pictures.present? %>
           <% @pictures.each do |picture| %>
@@ -102,10 +102,10 @@
       <div class="picture-container">
         <% if @results.present? %>
           <% @results.each do |result| %>
-            <div class="index-contents">
+            <div class="index-contents" style='background-image: url("/images/background/<%= b_images.sample %>");-moz-background-size:100% 100%;
+            background-size:100% 100%;'>>
               <div class="picture-wrapper">
                 <%= link_to image_tag(result.image , width: '80%', height: '100%', alt: "画像"), picture_path(result), class: "picture" %>
-                <%#= image_tag 'picture-pin2.png', class: "picture-pin" %>
               </div>
               <div class="description">
                 <div class="title">
