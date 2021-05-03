@@ -20,7 +20,8 @@ a {
   background-image: url("/images/corkbord.jpeg");
 }
 .contents-wrapper{
-  width: 80%;
+  width: 100%;
+  padding: 0 1.5vw;
 }
 
 .current-user-name{
@@ -43,7 +44,7 @@ a {
 }
 
 .index-contents{
-  width: 18%;
+  width: 14vw;
   height: 40vh;
   margin: 0 0.5vw 3vh;
   /*background-image: url("透明背景メモ.png");

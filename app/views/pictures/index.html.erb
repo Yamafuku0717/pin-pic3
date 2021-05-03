@@ -25,13 +25,14 @@
     </div>
   </div>
 </header>
-<% b_images = ["透明背景メモ.png", "背景メモ2.png", "背景メモ3.png", "背景メモ4.png", "背景メモ5.png", "背景メモ6.png", "背景メモ7.png", "背景メモ8.png", "背景メモ9.png", "背景メモ10.png", "背景メモ11.png"] %>
+<% b_images = ["透明背景メモ.png", "背景メモ2.png", "背景メモ3.png", "背景メモ4.png", "背景メモ5.png", "背景メモ6.png", "背景メモ7.png", "背景メモ9.png", "背景メモ10.png", "背景メモ11.png"] %>
 <div class="current-user-name">
   <% if user_signed_in? %>
     現在のユーザー：<%= current_user.nickname  %>
   <% end %>
 </div>
 <div class="whole-wrapper">
+  <% if user_signed_in? %>
   <div class="side-bar">
     <% if user_signed_in? %>
        <span class="new-post-link">新規投稿</span>
@@ -52,6 +53,7 @@
         </div>
     <% end %>
   </div>
+  <% end %>
   <% if @results.nil? %>
     <div class="contents-wrapper">
       <div class="index-title">
@@ -95,7 +97,6 @@
           <% @results.each do |result| %>
             <div class="index-contents" style='background-image: url("/images/background/<%= b_images.sample %>");-moz-background-size:100% 100%;
             background-size:100% 100%;'>
-            aaaa
               <div class="picture-wrapper">
                 <%= link_to image_tag(result.image , width: '80%', height: '100%', alt: "画像"), picture_path(result), class: "picture" %>
               </div>

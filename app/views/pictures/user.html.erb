@@ -19,13 +19,15 @@
   </div>
 </header>
 <div class="user-profile">
-  <% if @user.image.attached? %>
-    <%= image_tag @user.image, width: "13%"%>
-  <% end %>
-  <%= @user.profile %>
-  <% if user_signed_in? && current_user.id == @user.id %>
-    <%= link_to '編集',edit_user_registration_path %>
-  <% end %>
+  <div class="profile-container">
+    <% if @user.image.attached? %>
+      <%= image_tag @user.image, class: "profile-image"%>
+    <% end %>
+    <%= @user.profile %>
+    <% if user_signed_in? && current_user.id == @user.id %>
+      <%= link_to '編集',edit_user_registration_path %>
+    <% end %>
+  </div>
 </div>
 <div class="user-page-wrapper">
   <div class="user-main" id="public-main">
