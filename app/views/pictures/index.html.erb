@@ -46,7 +46,7 @@
             <br><%= f.text_field :text, class: "text-field", placeholder: 'タイトルを入力してください', maxlength: 20, size: "30" %>
             <label>
             <br><%= f.label :image, '画像', class: "post-image-label" %>
-            <br><%= f.file_field :image, class: "post-image-field" ,placeholder: 'Image url', size: "15" %>
+            <br><%= f.file_field :image, class: "post-image-field" ,placeholder: 'Image url'%>
             <br><input name="picture[public_private]" value="非公開" type="hidden">
             <br><%= f.submit '送信', class: "" %>
           <% end %>
