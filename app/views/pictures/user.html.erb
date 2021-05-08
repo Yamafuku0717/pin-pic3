@@ -22,6 +22,8 @@
   <div class="profile-container">
     <% if @user.image.attached? %>
       <%= image_tag @user.image, class: "profile-image"%>
+    <% else %>
+      <%= form_with model:  %>
     <% end %>
     <%= @user.profile %>
     <% if user_signed_in? && current_user.id == @user.id %>
