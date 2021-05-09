@@ -23,9 +23,14 @@
     <% if @user.image.attached? %>
       <%= image_tag @user.image, class: "profile-image"%>
     <% else %>
-      <%= form_with model:  %>
+      画像が設定されていません
     <% end %>
-    <%= @user.profile %>
+    <%= @user.nickname %>
+    <% if @user.profile.present? %>
+      <%= @user.profile %>
+    <% else %>
+      プロフィールが設定されていません
+    <% end %>
     <% if user_signed_in? && current_user.id == @user.id %>
       <%= link_to '編集',edit_user_registration_path %>
     <% end %>
