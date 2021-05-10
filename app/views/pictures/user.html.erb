@@ -20,19 +20,23 @@
 </header>
 <div class="user-profile">
   <div class="profile-container">
-    <% if @user.image.attached? %>
-      <%= image_tag @user.image, class: "profile-image"%>
-    <% else %>
-      画像が設定されていません
-    <% end %>
-    <%= @user.nickname %>
+    <div class="user-image-name">
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image, class: "profile-image"%>
+      <% else %>
+        画像が設定されていません
+      <% end %>
+      <div><%= @user.nickname %></div>
+      <div>
+        <% if user_signed_in? && current_user.id == @user.id %>
+          <%= link_to 'プロフィールを編集する',edit_user_registration_path %>
+        <% end %>
+      </div>
+    </div>
     <% if @user.profile.present? %>
       <%= @user.profile %>
     <% else %>
       プロフィールが設定されていません
-    <% end %>
-    <% if user_signed_in? && current_user.id == @user.id %>
-      <%= link_to '編集',edit_user_registration_path %>
     <% end %>
   </div>
 </div>

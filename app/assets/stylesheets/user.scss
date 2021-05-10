@@ -4,19 +4,24 @@
   padding: 0 2vw;
   display: flex;
   justify-content: center;
-  background-color: gray;
+  background-color: rgb(233, 225, 225);
 }
 
 .profile-container{
-  width: 50%;
+  width: 30%;
   height: 100%;
   display: flex;
   justify-content: space-between;
+  padding-top: 5vh;
 }
 
 .profile-image{
   width: 10vw;
   height: 15vh;
+}
+
+.user-image-name{
+  padding-right: 2vw;
 }
 
 .user-page-wrapper{
