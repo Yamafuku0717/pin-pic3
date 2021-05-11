@@ -69,7 +69,7 @@
               </div>
               <div class="description">
                 <div class="title">
-                  <p><%= picture.text.truncate(12) %></p>
+                  <p><%= picture.text.truncate(10) %></p>
                 </div>
                 <div class="user-name">
                   <%= link_to "投稿者: #{picture.user.nickname}", user_picture_path(picture.user.id) %>
@@ -101,7 +101,7 @@
               </div>
               <div class="description">
                 <div class="title">
-                  <p><%= result.text.truncate(12) %></p>
+                  <p><%= result.text.truncate(10) %></p>
                 </div>
                 <div class="user-name">
                   <%= link_to "投稿者: #{result.user.nickname}", user_picture_path(result.user.id) %>

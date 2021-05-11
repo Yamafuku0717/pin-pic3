@@ -60,7 +60,7 @@
             </div>
             <div class="description">
               <div class="title">
-                <p class="title"><%= public_picture.text.truncate(12) %></p>
+                <p class="title"><%= public_picture.text.truncate(10) %></p>
               </div>
               <div class="favorite-count">
                 <div class="icon">
@@ -91,7 +91,7 @@
             </div>
             <div class="description">
               <div class="title">
-                <p class="title"><%= private_picture.text.truncate(12) %></p>
+                <p class="title"><%= private_picture.text.truncate(10) %></p>
               </div>
             </div>
           </div>
@@ -115,7 +115,7 @@
             </div>
             <div class="description">
               <div class="title">
-                <p class="title"><%= favorite.picture.text.truncate(12) %></p>
+                <p class="title"><%= favorite.picture.text.truncate(10) %></p>
               </div>
               <div class="user-name">
                 <%= link_to "投稿者: #{favorite.picture.user.nickname}", user_picture_path(favorite.picture.user.id) %>
