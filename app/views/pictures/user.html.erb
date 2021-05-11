@@ -112,14 +112,13 @@
           <div class="user-contents">
             <div class="picture-wrapper">
               <%= link_to image_tag(favorite.picture.image , width: '80%', height: '100%', alt: "画像"), picture_path(favorite.picture), class: "picture" %>
-              <%#= image_tag 'picture-pin2.png', class: "picture-pin" %>
             </div>
             <div class="description">
               <div class="title">
                 <p class="title"><%= favorite.picture.text.truncate(12) %></p>
               </div>
               <div class="user-name">
-                <%= link_to "投稿者: #{favorite.user.nickname}", user_picture_path(favorite.user.id) %>
+                <%= link_to "投稿者: #{favorite.picture.user.nickname}", user_picture_path(favorite.picture.user.id) %>
               </div>
               <div class="favorite-count">
                 <div class="icon">

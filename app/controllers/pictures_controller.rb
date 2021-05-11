@@ -36,6 +36,7 @@ class PicturesController < ApplicationController
     if user_signed_in?
       gon.current_user_id = current_user.id
       gon.picture_user_id = @picture.user.id
+      gon.user_signed_in = user_signed_in?
     end
   end
 

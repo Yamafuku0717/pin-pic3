@@ -7,6 +7,7 @@ function picture (){
   const position = document.getElementById("position");
   const c_u_id = gon.current_user_id;
   const p_u_id = gon.picture_user_id;
+  const u_s_i = gon.user_signed_in;
   
   memoSwitch.addEventListener('click',function(){
     if(memoSwitch.getAttribute("value") == "ふきだしを表示"){
@@ -33,7 +34,7 @@ function picture (){
     
 });
 
-  if(c_u_id == p_u_id) {
+  if( u_s_i && c_u_id == p_u_id) {
   target.addEventListener('click', function(e){
     let offsetX = e.offsetX; // =>要素左上からのx座標
     let offsetY = e.offsetY; // =>要素左上からのy座標
