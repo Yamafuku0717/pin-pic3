@@ -1,7 +1,6 @@
 <div class='account-page' id='account-page'>
   <div class='account-page__inner clearfix'>
     <div class='account-page__inner--left account-page__header'>
-      <h2>Create Account</h2>
       <h5>新規アカウントの作成</h5>
     </div>
     <div class='account-page__inner--right user-form'>
@@ -9,7 +8,7 @@
         <%= devise_error_messages!%>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :nickname%><em>(8 characters maximum)</em>
+            <%= f.label :ニックネーム%><em>(8文字以内)</em>
           </div>
           <div class='field-input'>
             <%= f.text_field :nickname, autofocus: true, maxlength: 8, size: "30" %>
@@ -17,7 +16,7 @@
         </div>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :profile%><em>(200 characters maximum)</em>
+            <%= f.label :プロフィール%><em>(200文字以内)</em>
           </div>
           <div class='field-input'>
             <%= f.text_area :profile, autofocus: true, maxlength: 200, size: "30 x 5" %>
@@ -25,7 +24,7 @@
         </div>
         <div class='field'>
           <div class='field-label'>
-            <%= f.label :profile_image%>
+            <%= f.label :プロフィール画像%>
           </div>
           <div class='field-input'>
             <%= f.file_field :image %>
@@ -57,9 +56,10 @@
           </div>
         </div>
         <div class='actions'>
-          <%= f.submit "Create Account", class: 'btn'%>
+          <%= f.submit "アカウント作成", class: 'btn'%>
         </div>
       </div>
     <% end %>
   </div>
+  <%= link_to "トップページ", root_path %>
 </div>
