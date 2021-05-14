@@ -63,3 +63,5 @@ gem 'gon'
 gem 'ransack'
 gem 'rails_autolink'
 gem "aws-sdk-s3", require: false
+gem 'devise-i18n'
+gem 'devise-i18n-views'

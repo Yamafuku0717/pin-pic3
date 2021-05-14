@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    attributes:
+      picture:
+        text: タイトル
+        image: 画像
