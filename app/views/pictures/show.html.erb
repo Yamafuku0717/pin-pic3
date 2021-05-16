@@ -7,6 +7,21 @@
       <ul class="session">
       <% if user_signed_in? %>
         <li><%= link_to 'マイページ', user_picture_path(current_user) %></li>
+        <li>マイリストへ追加
+          <div class="my-list">
+            <% if @my_lists.present? %>
+              <ul>
+              <% @my_lists.each do |my_list| %>
+                <li><%= f.check_box :list_name %><%= my_list.name %></li>
+              <% end %>
+              </ul>
+            <% end %>
+            <%= form_with model: @my_list, class: "my-list-form", local: true do |f| %>
+              <%= f.text_field :name, class: "my-list-field" %>
+              <%= f.submit '新規リスト作成', class: "" %>        
+            <% end %>
+          </div>
+        </li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path %></li>
