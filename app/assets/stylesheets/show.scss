@@ -141,3 +141,17 @@
   display: table;
   font-size: 1em;
 }
+
+.my-list{
+  width: 10vw;
+  border: 1px solid black;
+  padding: 1px 0;
+  background-color: white;
+}
+
+.pull-down-list{
+  padding: 1px 0;
+  color: black;
+  border: 1px solid white;
+  text-align: start;
+}

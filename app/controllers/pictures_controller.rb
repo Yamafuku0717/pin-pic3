@@ -10,28 +10,25 @@ class PicturesController < ApplicationController
     @random = ["green-memo.png", "透明背景メモ.png"]
   end
 
-  def new 
-    @picture = Picture.new
-  end
+  #def new 
+    #@picture = Picture.new
+  #end
 
   def create 
     @pictures = Picture.where(public_private: "公開").includes(:user).order('created_at DESC')
     @picture = Picture.new(picture_params)
-    @memo = Memo.new
     if @picture.save
-      render :show
+      redirect_to picture_path(@picture)
     else
       render :index
-    end
-    if user_signed_in?
-      gon.current_user_id = current_user.id
-      gon.picture_user_id = @picture.user.id
     end
     
   end
 
   def show 
     @memo = Memo.new
+    @my_list = MyList.new
+    @my_lists = current_user.my_lists
     @links = @picture.memos
     if user_signed_in?
       gon.current_user_id = current_user.id

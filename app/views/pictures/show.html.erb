@@ -6,8 +6,21 @@
     <div class="header-right">
       <ul class="session">
       <% if user_signed_in? %>
-        <li><%= link_to 'マイページ', user_picture_path(current_user) %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        <li class="header-list"><%= link_to 'マイページ', user_picture_path(current_user) %></li>
+        <li class="header-list" id="my-list">マイリストへ追加
+          <div class="my-list hidden" id="pull-down">
+            <% if @my_lists.present? %>
+              <% @my_lists.each do |my_list| %>
+                <div class="pull-down-list"><%=  my_list.list_name %></div>
+              <% end %>
+            <% end %>
+            <%= form_with model: [@picture, @my_list], class: 'my-list-form', local: true do |f| %>
+              <%= f.text_field :list_name, class: "my-list-field" %>
+              <%= f.submit '新規リスト作成' %>        
+            <% end %>
+          </div>
+        </li>
+        <li class="header-list"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path %></li>
         <li><%= link_to '新規登録', new_user_registration_path %></li>

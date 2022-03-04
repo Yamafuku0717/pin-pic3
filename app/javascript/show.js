@@ -1,21 +1,17 @@
-/*function show (){
-  const memoSwitch = document.getElementById("memo-switch")
-  const memoInfo = document.querySelectorAll(".memo-info")
-  const markerClass = document.querySelectorAll("marker")
+function show (){
+  const myList = document.getElementById("my-list");
+  const pullDown = document.getElementById("pull-down")
   
-  markerClass.addEventListener('mouseover',function(){
-  memoInfo.forEach(function(target){
-    target.style.display = "block"
+  myList.addEventListener("click", function(e){
+    if(pullDown.getAttribute("style") == "display: block;"){
+      pullDown.removeAttribute("style", "display: block")
+    } else {
+      pullDown.setAttribute("style", "display: block;")
+    } return false;
   });
+  pullDown.addEventListener("click", function(e){    
+      e.stopPropagation();  
   });
-  /*$('.marker').on('mouseover', function(){
-    const id =  $(this).attr("id");
-    const markerId = document.getElementById(id)
-    markerId.addEventListener('mouseover', function(){
-      memoInfoId.setAttribute("style", "display: block;")
-    })
     
-});*/
-    
-/*};
-window.addEventListener('load', show);*/
+};
+window.addEventListener('load', show);

@@ -6,13 +6,13 @@
     <div class="header-right">
       <ul class="session">
       <% if user_signed_in? && current_user.id == @user.id %>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        <li class="header-list"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
       <% elsif user_signed_in? %>
-        <li><%= link_to 'マイページ', user_picture_path(current_user) %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+        <li class="header-list"><%= link_to 'マイページ', user_picture_path(current_user) %></li>
+        <li class="header-list"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
       <% else %>
-        <li><%= link_to 'ログイン', new_user_session_path %></li>
-        <li><%= link_to '新規登録', new_user_registration_path %></li>
+        <li class="header-list"><%= link_to 'ログイン', new_user_session_path %></li>
+        <li class="header-list"><%= link_to '新規登録', new_user_registration_path %></li>
       <% end %>
       </ul>
     </div>
@@ -75,9 +75,6 @@
     </div>
   </div>
   <div class="user-main" id="private-main" style="display: none;">
-    <div class="my-page-user">
-        <%= @user.nickname %>さんのマイページ
-    </div>
     <div class="sub-title">
       <h1>非公開画像一覧</h1>
     </div>
@@ -100,9 +97,6 @@
     </div>
   </div>
   <div class="user-main" id="favorite-main" style="display:none;">
-      <div class="my-page-user">
-        <%= @user.nickname %>さんのマイページ
-      </div>
       <div class="sub-title">
         <h1>お気に入り一覧</h1>
       </div>
