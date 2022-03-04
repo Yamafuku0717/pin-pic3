@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_065227) do
+ActiveRecord::Schema.define(version: 2021_05_16_113141) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 2021_04_22_065227) do
     t.index ["picture_id"], name: "index_memos_on_picture_id"
   end
 
+  create_table "my_lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "list_name", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_my_lists_on_user_id"
+  end
+
   create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "text", null: false
     t.bigint "user_id"
@@ -79,5 +87,6 @@ ActiveRecord::Schema.define(version: 2021_04_22_065227) do
   add_foreign_key "favorites", "pictures"
   add_foreign_key "favorites", "users"
   add_foreign_key "memos", "pictures"
+  add_foreign_key "my_lists", "users"
   add_foreign_key "pictures", "users"
 end
